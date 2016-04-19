@@ -102,7 +102,8 @@ void Light::fadePars(float topFade, char fadeType, int FItype, int fadeTime, str
     else if (howMany == "noButtonPars"){
         
         // CONSTRUCCIO VECTORS
-        vector<int> idxNoButtonPars(maxPar - sizeof(idxButtonPars));                      // non-user indexs
+        //vector<int> idxNoButtonPars(maxPar - sizeof(idxButtonPars));
+        vector<int> idxNoButtonPars(maxPar - 2);  // non-user indexs
         
         int j = 0;
         for (int i = 0; i < maxPar; i++){

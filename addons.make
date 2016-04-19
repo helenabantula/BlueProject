@@ -1,2 +1,3 @@
 ofxArtnet
 ofxGPIO
+ofxXmlSettings
