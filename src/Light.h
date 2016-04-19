@@ -19,57 +19,45 @@ class Light{
     
 public:
     
-    
     static Light &getInstance()
     {
         static Light instance;
         return instance;
-    
+        
     }
     
+    
+    // ARTNET & DMX
     ofxArtnet artnet;
-    vector<Par> leds;
     vector<unsigned char> packDMX;
-    //unsigned char packDMX[48];
-    //unsigned char old_packDMX[15];
     
+    
+    // PARS & COLORS
     vector<ofColor> colors;
+    vector<Par> pars;
+    int idxButtonPars[2];
     
-    
-    
-    uint8_t dmx[3];
-    int maxPar = 4;
-    int numUsers;
-    int parXuser;
-    vector<bool> currentUsers;
-    int numCurrentUsers = 0;
-    
-    vector<vector<int>> parUserAssign;
+    int maxPar = 6;
   
     
-    void initialize(int numUsers);
+    void initialize();
+    void changeColor();
+    
     void getInfo();
     void sendInfo();
-    void equalFade(float k, char fade, int type, int step); //tots els pars
-    void fadeUserPars(float k, char fade, int type, int step, int user);    // fade of the current user pars (only 1 user allowed)
-    void fadeUnusedPars(float k, char fade, int type, int step, int users); // fade of the non-used pars only by knowing the current users
+    
+    void fadePars(float topFade, char fadeType, int FItype, int fadeTime, string howMany); //tots els pars
+    void fadeButtonPars(float topFade, char fadeType, int FItype, int fadeTime); //uns quants pars
+    void switchColor(ofColor color);
+    
+    
+    void setParsColor(ofColor color);
+    void setParState(float topColor);
+    
     void randomPlay(bool state);
-    void openUser(int userID);
-    void closeUser(int userID);
-    void assignPars();
-    void setParState(float k, int users);
-    void setUnusedPars(float k, int users);
-    
-    bool isUserOpened(int userID);
-    
-    
-    
-
-    
-
-    
 
 
+    
 };
 
 #endif /* defined(__Corasonsitu__light__) */

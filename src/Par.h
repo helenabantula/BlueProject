@@ -13,28 +13,37 @@
 #include "ofxArtnet.h"
 #include "ofMain.h"
 
-#endif /* defined(__Corasonsitu__par__) */
+#endif
 
 class Par {
 
 public:
     
-    //unsigned char color[3];
+
+    // FEATURES
+    
     ofColor color;
     ofColor colorI;            //color inicial, sempre el mateix
     int id;
-    bool isFadeIn = false;
-    bool isFadeOut = false;
-    bool isRandom = false;
+
     
-    int time;
-    
-    int i;
+    // FADES
+
     int stepFI = 200; //in milliseconds
     int stepFO = 200;
+    bool isFadeIn = false;
+    bool isFadeOut = false;
     float topFade = 0.3;
     int type=1;
 
+
+    // OTHERS
+    
+    int i;
+    bool isRandom = false;
+    int time;
+    
+    
     
     Par (ofColor,int);
     void fadeIn();
@@ -43,10 +52,11 @@ public:
     void fadeOut();
     void update();
     void randomMove();
-    //void initialize(int time);
+    
     ofColor getColor(){return color;};
     
-    void setColor(int k){color = colorI*k;};
+    void multiplyColor(int k){color = colorI*k;};
+    void setColor(ofColor newColor){colorI = newColor;};
 
     
 };

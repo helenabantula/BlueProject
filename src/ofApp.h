@@ -1,24 +1,59 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Light.h"
+
+enum StateType{
+    
+    STATE_IDLE,
+    STATE_WARMING,
+    STATE_PLAY,
+    STATE_POSTPLAY,
+    STATE_CRISIS
+};
+
 
 class ofApp : public ofBaseApp{
 
 	public:
-		void setup();
-		void update();
-		void draw();
+    
+    
+    StateType appState = STATE_IDLE;
+    
+    // TIME MANAGEMENT
+    int counter;
+    int warmingTime = 3;
+    int maxErrorTime = 240; //4min
+    int postPlayTime;
+    int postPlayCounter;
+    bool isCounterOn = true;
+    
+    
+    // BUTTONS
+    bool buttonON = false;
+    bool buttonOFF = false;
+    
+    
+    // LIGHT
+    Light llum;
+    
+    
+    // FILE
+    ofFile file;
+    ofBuffer dataBuffer;
+    
+    //file.open(ofToDataPath("results.xml"), ofFile::ReadWrite, false);
 
-		void keyPressed(int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
+    void setup();
+    void update();
+    void draw();
+    
+    void idle();
+    void warming();
+    void play();
+    void postPlay();
+    void crisis();
+    
+
 		
 };

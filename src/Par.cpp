@@ -42,17 +42,15 @@ void Par::triggerFadeIn(int tipus, int step){ //trigger: ep, estic fent un fadei
 void Par::fadeIn(){
     
     color[0] = (ofGetElapsedTimeMillis()-time)*((float)colorI[0]*topFade/(float)stepFI);
-    color[1] = (ofGetElapsedTimeMillis()-time)*((float)colorI[1]*topFade/(float)stepFI);;
-    color[2] = (ofGetElapsedTimeMillis()-time)*((float)colorI[2]*topFade/(float)stepFI);;
+    color[1] = (ofGetElapsedTimeMillis()-time)*((float)colorI[1]*topFade/(float)stepFI);
+    color[2] = (ofGetElapsedTimeMillis()-time)*((float)colorI[2]*topFade/(float)stepFI);
     
     if ((ofGetElapsedTimeMillis()-time)>stepFI){
 
         color = colorI*topFade;
-        
-        
         isFadeIn=false;
         
-        if (type==1){
+        if (type == 1){
             stepFO = stepFI;
             triggerFadeOut(stepFO);
         }
@@ -87,11 +85,7 @@ void Par::fadeOut(){
 void Par::randomMove(){
  
     topFade = ofNoise(ofGetElapsedTimef()/1.5+(300*id));             //300*id per a crear offset entre els pars
-    topFade = ofMap(topFade, 0.2, 0.8, 0.3, 1, true);       //mapping dels valors del soroll a 0 i 1, valors mes grans que accepta el par
+    topFade = ofMap(topFade, 0.2, 0.8, 0.3, 1, true);       //mapping dels valors del soroll a 0 i 1
     color = colorI*topFade;
-    //color.r = colorI.r*topFade;
-    //color.b = colorI.b*topFade;
-    
-
 
 }
