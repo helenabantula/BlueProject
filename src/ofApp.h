@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "Light.h"
+#include "ofxGPIO.h"
 
 enum StateType{
     
@@ -43,6 +44,11 @@ class ofApp : public ofBaseApp{
     ofBuffer dataBuffer;
     
     //file.open(ofToDataPath("results.xml"), ofFile::ReadWrite, false);
+    
+    GPIO gpio17;
+    string state_button;
+    
+
 
     void setup();
     void update();
