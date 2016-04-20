@@ -11,7 +11,7 @@
 
 void Light::initialize(){
 #if TARGET_RASPBERRY_PI
-    artnet.setup("192.168.1.109"); //IP de rPi
+    artnet.setup("192.168.1.128"); //IP de rPi
 #else
     artnet.setup("192.168.1.102"); //IP ordinador
 #endif    
@@ -56,7 +56,7 @@ void Light::getInfo(){
 
 void Light::sendInfo(){
     
-    artnet.sendDmx("192.168.1.150",&packDMX[0], packDMX.size());
+    artnet.sendDmx("192.168.1.151",&packDMX[0], packDMX.size());
 }
 
 

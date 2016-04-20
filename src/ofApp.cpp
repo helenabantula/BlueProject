@@ -8,10 +8,13 @@ void ofApp::setup(){
     
     
     //projecci—--------------------
-    myfont.load("toboto.ttf", 300);
+    
+    //ofTrueTypeFont::setGlobalDpi(150);
 
-    myfont.load("gt-walsheim-bold.ttf", 300);
+    //myfont.load("roboto.ttf", 300);
 
+    //myfont.load("gt-walsheim-bold.ttf", 100,false,true);
+    myfont.load("gt-walsheim-bold.ttf",50);
     
     //myfont.load("Montserrat-Bold.otf", 300);
 
@@ -32,13 +35,13 @@ void ofApp::setup(){
                                         + std::to_string(ofGetMinutes()) + ".xml");
     
     //GPIO----------------------------
-    gpio17.setup("17");
-    gpio17.export_gpio();
-    gpio17.setdir_gpio("in");
-    
-    gpio4.setup("4");
-    gpio4.export_gpio();
-    gpio4.setdir_gpio("in");
+//    gpio17.setup("17");
+//    gpio17.export_gpio();
+//    gpio17.setdir_gpio("in");
+//    
+//    gpio4.setup("4");
+//    gpio4.export_gpio();
+//    gpio4.setdir_gpio("in");
 
 //    gpio1.setup("1");
 //    gpio2.setup("2");
@@ -100,6 +103,9 @@ void ofApp::update(){
     Light::getInstance().getInfo();
     
     
+    //cout <<"HO ESTIC FENT BE"<< endl;
+    
+    
 //    int valorGPIOon;
 //    valorGPIOon = gpio17.getval_gpio(state_buttonON);
 //    cout <<"ON : "+ state_buttonON << endl;
@@ -112,7 +118,7 @@ void ofApp::update(){
     
 //    string sate_button;
 
-    int valorGPIO;
+    //int valorGPIO;
     
 //    valorGPIO = gpio1.getval_gpio(state_buttonOFF);
 //    cout <<"Gpio1 : " + state_buttonOFF << endl;
@@ -123,9 +129,9 @@ void ofApp::update(){
 //    valorGPIO = gpio3.getval_gpio(state_buttonOFF);
 //    cout <<"Gpio3 : " + state_buttonOFF << endl;
 //    
-   valorGPIO = gpio4.getval_gpio(state_buttonON);
-   cout <<"Gpio4 : " + state_buttonON << endl;
-//    
+//   valorGPIO = gpio4.getval_gpio(state_buttonON);
+//   cout <<"Gpio4 : " + state_buttonON << endl;
+//
 //    valorGPIO = gpio5.getval_gpio(state_buttonOFF);
 //    cout <<"Gpio5 : " + state_buttonOFF << endl;
 //    
@@ -162,11 +168,11 @@ void ofApp::update(){
 //    valorGPIO = gpio16.getval_gpio(state_buttonOFF);
 //    cout <<"Gpio1 : " + state_buttonOFF << endl;
     
-    valorGPIO = gpio17.getval_gpio(state_buttonOFF);
-    cout <<"Gpio17 : " + state_buttonOFF << endl;
+//    valorGPIO = gpio17.getval_gpio(state_buttonOFF);
+//    cout <<"Gpio17 : " + state_buttonOFF << endl;
     
     
-    usleep(50000);
+    //usleep(50000);
 
     
     
@@ -253,7 +259,7 @@ void ofApp::draw()
     
    myfont.drawString(clock, middleX-400,middleY);
     
-    ofDrawBitmapString("Helena",10,10);
+    //ofDrawBitmapString("Helena",10,10);
     
     //ofDrawBitmapString(clock,middleX,middleY,100);
     
