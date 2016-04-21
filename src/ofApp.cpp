@@ -3,6 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    
+    ofHideCursor();
+    
     Light::getInstance().initialize();      // Els pars es posen tots a tope
     Light::getInstance().fadePars(1, 'O', '0', warmingTime, 3);
     
@@ -174,7 +177,7 @@ void ofApp::warming(){
 //--------------------------------------------------------------
 void ofApp::play(){
     
-    if (buttonOFF) {
+    if (buttonOFF || ((ofGetElapsedTimef() - counter) > maxErrorTime) ) {
         
          cout << "button OFF................" << endl;
         
@@ -237,7 +240,7 @@ void ofApp::saveData()
     
     
     dataLog.setValue(userTime, finalCounter);
-    dataLog.setValue(userColor, "blue"); //<<<<<<<-----------------------------!!!!!INTRODUIR COLOR!!!!!
+    dataLog.setValue(userColor, Light::getInstance().getCurrentColor()); //<<<<<<<-----------------------------!!!!!INTRODUIR COLOR!!!!!
     dataLog.setValue(userDay, std::to_string(ofGetDay()));
     dataLog.setValue(userHour, std::to_string(ofGetHours()) + "." + std::to_string(ofGetMinutes()));
     

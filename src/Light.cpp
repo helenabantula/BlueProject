@@ -27,6 +27,9 @@ void Light::initialize(){
         pars.push_back(temPar);
     }
     
+    idxButtonPars[0] = 0;
+    idxButtonPars[1] = 1;
+    
 
     vector<unsigned char> tempPackDMX(maxPar*3);
     packDMX = tempPackDMX;
@@ -139,11 +142,18 @@ void Light::changeColor(){
     int idx;
     
     if (randIdx > 0)
+    {
         idx = 1;
-    else
+        currentColor = "blue";
+    
+    } else
+    {
         idx = 0;
+        currentColor = "red";
+    }
     
     this->setParsColor(colors[idx]);
+    
 
 }
 
@@ -167,6 +177,10 @@ void Light::setParState(float topColor){
     
 }
 
+string Light::getCurrentColor()
+{
+    return currentColor;
+}
 
 
 

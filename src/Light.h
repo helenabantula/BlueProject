@@ -37,6 +37,8 @@ public:
     vector<Par> pars;
     int idxButtonPars[2];
     
+    string currentColor;
+    
     int maxPar = 6;
   
     
@@ -53,6 +55,9 @@ public:
     
     void setParsColor(ofColor color);
     void setParState(float topColor);
+    
+    
+    string getCurrentColor();
     
     void randomPlay(bool state);
 

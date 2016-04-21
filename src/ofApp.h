@@ -37,7 +37,7 @@ class ofApp : public ofBaseApp{
     
     
     int warmingTime = 3;
-    int maxErrorTime = 240; //4min
+    int maxErrorTime = 15;//240; //4min
     int postPlayTime = 5;
     int postPlayCounter;
     bool isCounterOn = false;
