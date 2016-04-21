@@ -56,7 +56,10 @@ public:
     ofColor getColor(){return color;};
     
     void multiplyColor(int k){color = colorI*k;};
-    void setColor(ofColor newColor){colorI = newColor;};
+    void setColor(ofColor newColor){
+        color = newColor;
+        colorI = newColor;
+    };
 
     
 };

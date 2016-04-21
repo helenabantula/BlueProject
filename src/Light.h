@@ -46,7 +46,7 @@ public:
     void getInfo();
     void sendInfo();
     
-    void fadePars(float topFade, char fadeType, int FItype, int fadeTime, string howMany); //tots els pars
+    void fadePars(float topFade, char fadeType, int FItype, int fadeTime, int howMany); //tots els pars
     void fadeButtonPars(float topFade, char fadeType, int FItype, int fadeTime); //uns quants pars
     void switchColor(ofColor color);
     

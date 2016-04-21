@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "Light.h"
-#include "ofxGPIO.h"
+#include "ofxGPIO.h"  //<<<<----------------------------DESCOMENTAR!!!!!!!!!!!!!!!!!!!!
 
 #include "ofxXmlSettings.h"
 
@@ -23,16 +23,24 @@ class ofApp : public ofBaseApp{
 
 	public:
     
+    void keyPressed(int key);
+    void keyReleased(int key);
     
     StateType appState = STATE_IDLE;
     
     // TIME MANAGEMENT
-    int counter;
+    
+    
+    int counter; //temps d'inici de comptador
+    int finalCounter; //interval de temps passat quan es para el comptador
+    
+    
+    
     int warmingTime = 3;
     int maxErrorTime = 240; //4min
-    int postPlayTime;
+    int postPlayTime = 5;
     int postPlayCounter;
-    bool isCounterOn = true;
+    bool isCounterOn = false;
     
     
     // BUTTONS
@@ -45,30 +53,15 @@ class ofApp : public ofBaseApp{
     
     
     //GPIO
-    //GPIO gpio17;
-//    GPIO gpio1;
-//    GPIO gpio2;
-//    GPIO gpio3;
-    GPIO gpio4;
-//    GPIO gpio5;
-//    GPIO gpio6;
-//    GPIO gpio7;
-//    GPIO gpio8;
-//    GPIO gpio9;
-//    GPIO gpio10;
-//    GPIO gpio11;
-//    GPIO gpio12;
-//    GPIO gpio13;
-//    GPIO gpio14;
-//    GPIO gpio15;
-//    GPIO gpio16;
+
+    GPIO gpio21;
     GPIO gpio17;
-
-
-//    string sate_button;
-    
     string state_buttonON;
     string state_buttonOFF;
+    string state_button;
+
+
+
 
     
 
@@ -81,6 +74,9 @@ class ofApp : public ofBaseApp{
     void play();
     void postPlay();
     void crisis();
+    
+    void saveData();
+
     
     
     // Projecci— i XML ---------------------------------
@@ -100,11 +96,10 @@ class ofApp : public ofBaseApp{
     string clock;
     
     
-    ofxXmlSettings XML;
+    ofxXmlSettings dataLog;
+    int userIndex;
 
     //---------------------------------------------------
     
-    
-
-		
+    		
 };

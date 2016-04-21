@@ -1,4 +1,3 @@
-//
 //  light.cpp
 //  Corasonsitu
 //
@@ -60,10 +59,10 @@ void Light::sendInfo(){
 }
 
 
-void Light::fadePars(float topFade, char fadeType, int FItype, int fadeTime, string howMany){
+void Light::fadePars(float topFade, char fadeType, int FItype, int fadeTime, int howMany){
     
 
-    if (howMany == "all"){
+    if (howMany == 2){
         
         for (int i = 0; i < maxPar; i++){
             
@@ -79,7 +78,7 @@ void Light::fadePars(float topFade, char fadeType, int FItype, int fadeTime, str
     
     }
     
-    else if (howMany == "buttonPars"){
+    else if (howMany == 1){
         
         
         for (int i = 0; i < sizeof(idxButtonPars); i++){
@@ -99,7 +98,7 @@ void Light::fadePars(float topFade, char fadeType, int FItype, int fadeTime, str
     
     }
     
-    else if (howMany == "noButtonPars"){
+    else if (howMany == 3){
         
         // CONSTRUCCIO VECTORS
         //vector<int> idxNoButtonPars(maxPar - sizeof(idxButtonPars));
