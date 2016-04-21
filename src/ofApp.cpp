@@ -244,6 +244,10 @@ void ofApp::saveData()
     dataLog.saveFile("Log_BlueProject_" + std::to_string(ofGetDay()) + "_"
                      + std::to_string(ofGetHours()) + "h"
                      + std::to_string(ofGetMinutes()) + ".xml");
+    
+    dataLog.saveFile("Log_BlueProject_" + std::to_string(ofGetDay()) + "_"
+                     + std::to_string(ofGetHours()) + "h"
+                     + std::to_string(ofGetMinutes()) + "_copy.xml");
 
 }
 
