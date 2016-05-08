@@ -4,6 +4,21 @@
 void ofApp::setup(){
     
     
+    ////////////////////////// SERIAL ////////////////////////
+    ofSetVerticalSync(true);
+    int baud = 9600;
+    
+    
+    serial.listDevices();
+    
+    vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
+#if TARGET_RASPBERRY_PI
+    serial.setup(0, baud);
+#else
+    serial.setup("/dev/cu.usbmodem1421",baud);
+#endif
+    
+    
     ofHideCursor();
     
     Light::getInstance().initialize();      // Els pars es posen tots a tope
@@ -40,13 +55,13 @@ void ofApp::setup(){
     appState = STATE_IDLE;
     
 //GPIO----------------------------
-    gpio17.setup("17");
-    gpio17.export_gpio();
-    gpio17.setdir_gpio("in");
-    
-    gpio21.setup("21");
-    gpio21.export_gpio();
-    gpio21.setdir_gpio("in");
+//    gpio17.setup("17");
+//    gpio17.export_gpio();
+//    gpio17.setdir_gpio("in");
+//    
+//    gpio21.setup("21");
+//    gpio21.export_gpio();
+//    gpio21.setdir_gpio("in");
     
 
 
@@ -113,32 +128,59 @@ void ofApp::update(){
     
     
     
-    gpio17.getval_gpio(state_buttonON);
-
+    //gpio17.getval_gpio(state_buttonON);
     
-    if (ofToInt(state_buttonON) == 1){
+    
+    /////////// SERIAL ///////
+    //unsigned char lectura[3];
+    unsigned char* lectura;
+	lectura = new unsigned char(' '); //[2] = {' ', ' '};
+    serial.readBytes(lectura, 1);  //int readBytes(unsigned char * buffer, int length);
+    
+   cout << *lectura << endl;
+    
+   
+    if (*lectura == 'Y'){
         buttonON = true;
-        cout << "ON!!" << endl;
+        cout << "HE REBUT ON!!!!" << endl;
     }
-    else
+    else {
         buttonON = false;
-
-    gpio21.getval_gpio(state_button);
     
-    
-    
-    if (ofToInt(state_button) == 1){
-        buttonOFF = true;
-        cout << "OFF!!" << endl;
     }
-    else
+    
+    if (*lectura == 'N'){
+        buttonOFF = true;
+        cout << "HE REBUT OFF!!!!" << endl;
+    }
+    else {
         buttonOFF = false;
+        
+    }
+    
+//    if (ofToInt(state_buttonON) == 1){
+//        buttonON = true;
+//        cout << "ON!!" << endl;
+//    }
+//    else
+//        buttonON = false;
+//
+//    gpio21.getval_gpio(state_button);
+//    
+//    
+//    
+//    if (ofToInt(state_button) == 1){
+//        buttonOFF = true;
+//        cout << "OFF!!" << endl;
+//    }
+//    else
+//        buttonOFF = false;
     
     
     // LIGHT
     Light::getInstance().getInfo();
     
-    cout << appState << endl;
+    //cout << appState << endl;
     
 }
 
@@ -193,7 +235,7 @@ void ofApp::play(){
         
         appState = STATE_POSTPLAY;
         
-        Light::getInstance().fadePars(1, 'O', 1, postPlayTime*1000, 3);
+        Light::getInstance().fadePars(1, 'O', 1, postPlayTime*500, 3);
         
         //return 0;
         
@@ -293,7 +335,7 @@ void ofApp::draw()
     
     myfont.drawString(clock, middleX-400,middleY);
     
-    ofDrawBitmapString(appState,10,10);
+   // ofDrawBitmapString(appState,10,10);
     
     //ofDrawBitmapString(clock,middleX,middleY,100);
     

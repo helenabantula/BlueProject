@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "Light.h"
-#include "ofxGPIO.h"  //<<<<----------------------------DESCOMENTAR!!!!!!!!!!!!!!!!!!!!
+//#include "ofxGPIO.h"  //<<<<----------------------------DESCOMENTAR!!!!!!!!!!!!!!!!!!!!
 
 #include "ofxXmlSettings.h"
 
@@ -37,8 +37,8 @@ class ofApp : public ofBaseApp{
     
     
     int warmingTime = 3;
-    int maxErrorTime = 15;//240; //4min
-    int postPlayTime = 5;
+    int maxErrorTime = 240;//240; //4min
+    int postPlayTime = 15;
     int postPlayCounter;
     bool isCounterOn = false;
     
@@ -54,14 +54,14 @@ class ofApp : public ofBaseApp{
     
     //GPIO
 
-    GPIO gpio21;
-    GPIO gpio17;
-    string state_buttonON;
-    string state_buttonOFF;
-    string state_button;
+//    GPIO gpio21;
+//    GPIO gpio17;
+//    string state_buttonON;
+//    string state_buttonOFF;
+//    string state_button;
 
-
-
+    //SERIAL
+    ofSerial serial;
 
     
 
